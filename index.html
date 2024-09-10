@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טופס הזמנת משלוח פרחים</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background-color: #f9f3e6;
+            color: #5c4033;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b4513;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #6b5143;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0d0c1;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #fffcf7;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #d4a76a;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238b4513' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            padding-left: 35px;
+        }
+
+        button {
+            background-color: #d4a76a;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #c1945c;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Flower decorations */
+        .flower {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ffd1dc;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .flower::before,
+        .flower::after {
+            content: '';
+            position: absolute;
+            background-color: #ffd1dc;
+            border-radius: 50%;
+        }
+
+        .flower::before {
+            width: 100%;
+            height: 100%;
+            transform: rotate(45deg);
+        }
+
+        .flower::after {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-45deg);
+        }
+
+        .flower-1 {
+            top: 30px;
+            left: 30px;
+        }
+
+        .flower-2 {
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .flower-center {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ffee93;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flower flower-1"><div class="flower-center"></div></div>
+        <div class="flower flower-2"><div class="flower-center"></div></div>
+        <h1>טופס הזמנת משלוח פרחים</h1>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="senderName">שם המזמין</label>
+                <input type="text" id="senderName" name="שם המזמין" required>
+            </div>
+            <div class="form-group">
+                <label for="senderPhone">טלפון המזמין</label>
+                <input type="tel" id="senderPhone" name="טלפון המזמין" required>
+            </div>
+            <div class="form-group">
+                <label for="recipientName">שם המקבל</label>
+                <input type="text" id="recipientName" name="שם המקבל" required>
+            </div>
+            <div class="form-group">
+                <label for="recipientPhone">טלפון המקבל</label>
+                <input type="tel" id="recipientPhone" name="טלפון המקבל" required>
+            </div>
+            <div class="form-group">
+                <label for="street">רחוב</label>
+                <input type="text" id="street" name="רחוב" required>
+            </div>
+            <div class="form-group">
+                <label for="city">עיר</label>
+                <input type="text" id="city" name="עיר" required>
+            </div>
+            <div class="form-group">
+                <label for="houseType">סוג מגורים</label>
+                <select id="houseType" name="סוג מגורים" required>
+                    <option value="דירה פרטית">דירה פרטית</option>
+                    <option value="בניין">בניין</option>
+                </select>
+            </div>
+            <div id="apartmentDetails" class="hidden">
+                <div class="form-group">
+                    <label for="floor">קומה</label>
+                    <input type="number" id="floor" name="קומה">
+                </div>
+                <div class="form-group">
+                    <label for="buildingCode">קוד לבניין</label>
+                    <input type="text" id="buildingCode" name="קוד לבניין">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="greeting">ברכה</label>
+                <textarea id="greeting" name="ברכה" rows="4"></textarea>
+            </div>
+            <button type="submit">שלח הזמנה</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('houseType').addEventListener('change', function() {
+            const apartmentDetails = document.getElementById('apartmentDetails');
+            if (this.value === 'בניין') {
+                apartmentDetails.classList.remove('hidden');
+            } else {
+                apartmentDetails.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            let message = 'הזמנה חדשה:\n\n';
+            for (let [key, value] of formData.entries()) {
+                if (value) {  // Only add non-empty fields
+                    message += `${key}: ${value}\n`;
+                }
+            }
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Replace 'YOUR_PHONE_NUMBER' with your actual WhatsApp number including country code
+            const whatsappURL = `https://wa.me/YOUR_PHONE_NUMBER?text=${encodedMessage}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+</body>
+</html>
